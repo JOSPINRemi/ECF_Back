@@ -93,3 +93,37 @@ CREATE TABLE IF NOT EXISTS emploi_du_temps
     FOREIGN KEY (id_matiere) REFERENCES matiere (id_matiere),
     FOREIGN KEY (id_etudiant) REFERENCES etudiant (id_etudiant)
 );
+
+# Requêtes
+# USE ecf_back;
+#
+# SELECT *
+# FROM classe;
+#
+# SELECT id_etudiant, COUNT(*) as "nombre_matiere_suivies"
+# FROM emploi_du_temps
+# GROUP BY id_etudiant
+# HAVING id_etudiant = 2;
+#
+# SELECT *
+# FROM note
+# WHERE id_etudiant = 1;
+#
+# SELECT avg(valeur_note)
+# FROM note
+# GROUP BY id_etudiant
+# HAVING id_etudiant = 1;
+#
+# SELECT COUNT(*)
+# FROM departement
+#          JOIN enseignant as ens on departement.id_departement = ens.id_departement
+#          JOIN enseignant_classe as ec on ens.matricule_enseignant = ec.matricule_enseignant
+#          JOIN classe as c on c.id_classe = ec.id_classe
+#          JOIN etudiant as e on c.id_classe = e.id_classe
+# GROUP BY departement.id_departement
+# HAVING departement.id_departement = 1;
+#
+# SELECT nom_etudiant
+# FROM etudiant
+#          JOIN classe as c on etudiant.id_classe = c.id_classe
+# WHERE niveau_classe = 'Première année';
