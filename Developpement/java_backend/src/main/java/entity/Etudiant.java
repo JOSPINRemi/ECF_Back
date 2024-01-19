@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,10 +30,10 @@ public class Etudiant {
     private Classe classe;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Note> notes;
+    private List<Note> notes = new ArrayList<>();
 
     @OneToMany(mappedBy = "matiere")
-    private List<EmploiDuTemp> emploiDuTemps;
+    private List<EmploiDuTemps> emploisDuTemps = new ArrayList<>();
 
     public Etudiant() {
     }
@@ -73,7 +74,10 @@ public class Etudiant {
         return emailEtudiant;
     }
 
-    public void setEmailEtudiant(String emailEtudiant) {
+    public void setEmailEtudiant(String emailEtudiant) throws Exception {
+        if (!emailEtudiant.equals("^(.+)@gmail.com$")){
+            throw new Exception("Email invalide");
+        }
         this.emailEtudiant = emailEtudiant;
     }
 
@@ -91,6 +95,14 @@ public class Etudiant {
 
     public void setNotes(List<Note> notes) {
         this.notes = notes;
+    }
+
+    public List<EmploiDuTemps> getEmploisDuTemps() {
+        return emploisDuTemps;
+    }
+
+    public void setEmploisDuTemps(List<EmploiDuTemps> emploisDuTemps) {
+        this.emploisDuTemps = emploisDuTemps;
     }
 
     @Override

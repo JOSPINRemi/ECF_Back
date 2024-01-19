@@ -9,7 +9,7 @@
 
         <mapping class="entity.Classe"/>
         <mapping class="entity.Departement"/>
-        <mapping class="entity.EmploiDuTemp"/>
+        <mapping class="entity.EmploiDuTemps"/>
         <mapping class="entity.Enseignant"/>
         <mapping class="entity.Etudiant"/>
         <mapping class="entity.Matiere"/>

@@ -1,42 +1,43 @@
 package dao.impl;
 
 import dao.Dao;
-import entity.Classe;
+import entity.Enseignant;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class ClasseDaoImpl implements Dao<Classe> {
+public class EnseignantDaoImpl implements Dao<Enseignant> {
+
     private final Session session;
     private Transaction transaction;
 
-    public ClasseDaoImpl(Session session) {
+    public EnseignantDaoImpl(Session session) {
         this.session = session;
     }
 
     @Override
-    public boolean create(Classe element) {
+    public boolean create(Enseignant element) {
         transaction = session.beginTransaction();
         session.save(element);
-        transaction.commit();
+        session.getTransaction().commit();
         return true;
     }
 
     @Override
-    public Classe findById(int id) {
-        return session.get(Classe.class, id);
+    public Enseignant findById(int id) {
+        return session.get(Enseignant.class, id);
     }
 
     @Override
-    public List<Classe> findAll() {
-        Query<Classe> classeQuery = session.createQuery("from Classe ");
-        return classeQuery.list();
+    public List<Enseignant> findAll() {
+        Query<Enseignant> enseignantQuery = session.createQuery("from Enseignant ");
+        return enseignantQuery.list();
     }
 
     @Override
-    public boolean update(Classe element) {
+    public boolean update(Enseignant element) {
         transaction = session.beginTransaction();
         session.merge(element);
         transaction.commit();
@@ -44,7 +45,7 @@ public class ClasseDaoImpl implements Dao<Classe> {
     }
 
     @Override
-    public boolean delete(Classe element) {
+    public boolean delete(Enseignant element) {
         transaction = session.beginTransaction();
         session.delete(element);
         transaction.commit();

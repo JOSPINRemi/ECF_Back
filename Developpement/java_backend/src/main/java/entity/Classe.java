@@ -22,7 +22,7 @@ public class Classe {
     private List<Enseignant> enseignants = new ArrayList<>();
 
     @OneToMany(mappedBy = "classe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Etudiant> etudiants;
+    private List<Etudiant> etudiants = new ArrayList<>();
 
     public Classe() {
     }

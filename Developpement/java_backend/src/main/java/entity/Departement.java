@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class Departement {
     private String nomDepartement;
 
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Enseignant> enseignants;
+    private List<Enseignant> enseignants = new ArrayList<>();
 
     public Departement() {
     }

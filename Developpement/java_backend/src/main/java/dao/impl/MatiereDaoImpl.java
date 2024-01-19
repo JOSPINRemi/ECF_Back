@@ -1,23 +1,23 @@
 package dao.impl;
 
 import dao.Dao;
-import entity.Classe;
+import entity.Matiere;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class ClasseDaoImpl implements Dao<Classe> {
+public class MatiereDaoImpl implements Dao<Matiere> {
     private final Session session;
     private Transaction transaction;
 
-    public ClasseDaoImpl(Session session) {
+    public MatiereDaoImpl(Session session) {
         this.session = session;
     }
 
     @Override
-    public boolean create(Classe element) {
+    public boolean create(Matiere element) {
         transaction = session.beginTransaction();
         session.save(element);
         transaction.commit();
@@ -25,18 +25,18 @@ public class ClasseDaoImpl implements Dao<Classe> {
     }
 
     @Override
-    public Classe findById(int id) {
-        return session.get(Classe.class, id);
+    public Matiere findById(int id) {
+        return session.get(Matiere.class, id);
     }
 
     @Override
-    public List<Classe> findAll() {
-        Query<Classe> classeQuery = session.createQuery("from Classe ");
-        return classeQuery.list();
+    public List<Matiere> findAll() {
+        Query<Matiere> matiereQuery = session.createQuery("from Matiere ");
+        return matiereQuery.list();
     }
 
     @Override
-    public boolean update(Classe element) {
+    public boolean update(Matiere element) {
         transaction = session.beginTransaction();
         session.merge(element);
         transaction.commit();
@@ -44,7 +44,7 @@ public class ClasseDaoImpl implements Dao<Classe> {
     }
 
     @Override
-    public boolean delete(Classe element) {
+    public boolean delete(Matiere element) {
         transaction = session.beginTransaction();
         session.delete(element);
         transaction.commit();

@@ -31,7 +31,7 @@ public class Matiere {
     private List<Note> notes;
 
     @OneToMany(mappedBy = "etudiant")
-    private List<EmploiDuTemp> emploiDuTemps;
+    private List<EmploiDuTemps> emploisDuTemps;
 
     public Matiere() {
     }
